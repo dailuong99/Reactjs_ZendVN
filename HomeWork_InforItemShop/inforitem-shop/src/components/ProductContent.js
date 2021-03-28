@@ -1,17 +1,8 @@
 import React from 'react';
 
-function ProductContent(props){
-    let {title,branch,variations ,selectedVariantId}= props;
-    let selectedVariant = variations.find(o =>{
-        return o.id === selectedVariantId
-    })
-    console.log(selectedVariant);
-     function getClassActive(id){
-         if (id === selectedVariantId){
-            return 'active';
-         }
-         return '';
-     }
+export default  function ProductContent({title,branch,variations ,selectedVariant}){
+
+
     return(
         <div className="product-content">
         <h3 className="title"><a href="https://www.lazada.vn/products/ao-thun-nam-the-thao-hang-vnxk-vai-day-min-vai-dom-i265780948-s382816279.html" target="_blank">{title}</a></h3>
@@ -30,11 +21,10 @@ function ProductContent(props){
                 <ul>
                     {
                        variations.map(varian => {
-                           console.log(varian)
                            return <li
-                            className={getClassActive(varian.id)}
+                            className={varian.id === selectedVariant.id ? 'active' : ''}
                              key={varian.id}>
-                                 <img src={varian.images} alt={varian.name} />
+                                 <img src={varian.images}  alt="Màu Đỏ" />
                                  </li>
                        })
                     }
@@ -47,4 +37,3 @@ function ProductContent(props){
     </div>
     )
 }
-export default ProductContent;
