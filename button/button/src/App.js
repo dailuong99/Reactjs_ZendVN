@@ -12,7 +12,7 @@ function App() {
   const [userName, setUserName] = useState('congluc1902');
 
   return (
-    <div>
+    <>
       <div className="tcl-container">
         <div className="tcl-justify-content-center">
           {/* <div className="tcl-col-4" style="padding: 50px 0;"> */}
@@ -40,11 +40,11 @@ function App() {
             <Button  type='button' classCustom='btn btn-primary btn-size-large' name='Submit' /> 
             <Button type='submit' classCustom="btn btn-default" name='View More'  /> 
             <Button type='button' classCustom="btn btn-primary btn-size-large d-flex" name='Load More' isLoading='true'/> 
-            <Button  namehref='countinue' SuborRef='true' /> 
+            <Button  nameHref='countinue' subOrRef='true' /> 
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -8,16 +8,16 @@ type='button',
 name='',
 classCustom='',
 isLoading='false',
-linkhref="#",
-SuborRef="false",
-namehref=''
+linkHref="#",
+subOrRef="false",
+nameHref=''
 }){
     return(
-     <div>
-            { SuborRef === "true" ? <a href={linkhref}>{namehref}</a> :  
+     <>
+            { subOrRef === "true" ? <a href={linkHref}>{nameHref}</a> :  
                <button className={classCustom} type={type}>
             { isLoading === 'true'  ? <Loading /> : null } {name}
             </button> }
-     </div> 
+     </> 
     )
 }
