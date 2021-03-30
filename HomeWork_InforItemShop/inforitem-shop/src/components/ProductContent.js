@@ -1,18 +1,37 @@
 import React from 'react';
 
-export default  function ProductContent({title,branch,variations ,selectedVariant}){
+export default  function ProductContent({title,branch,variations ,selectedVariant,updateSelectedVariant,...restProps}){
+function formatPrice(price){
+return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price)
+}
+function renderPrice(){
+    const {percent,price} = selectedVariant;
 
+    if (selectedVariant.percent === 0){
+        return(
+            <div className="final-price">{formatPrice(price)}</div>
+        )
+    }
+    return(
+        <>
+        <div className="final-price">{formatPrice(price * (1 - percent))}</div>
+        <div className="origin-price">{formatPrice(price)}</div>
+        <div className="sale-price">-{percent * 100}%</div>
+        </>
+    )
+}
 
+ let handleAddtoCard = () =>{
+    restProps.handleAddtoCard();
+}
     return(
         <div className="product-content">
         <h3 className="title"><a href="https://www.lazada.vn/products/ao-thun-nam-the-thao-hang-vnxk-vai-day-min-vai-dom-i265780948-s382816279.html" target="_blank">{title}</a></h3>
         <p className="brand">Thương hiệu: {branch ? branch : 'No Branch'}</p>
-        <p className="quantity">Còn lại: 2 Sản phẩm</p>
+        <p className="quantity">Còn lại: {selectedVariant.quantity} Sản phẩm</p>
         {/**/}
         <div className="wrapper-price">
-            <div className="final-price">18.000&nbsp;₫</div>
-            <div className="origin-price">20.000&nbsp;₫</div>
-            <div className="sale-price">-10%</div>
+        {renderPrice()}
         </div>
         <div className="wrapper-color">
             <div className="text">Màu sắc :</div>
@@ -22,18 +41,16 @@ export default  function ProductContent({title,branch,variations ,selectedVarian
                     {
                        variations.map(varian => {
                            return <li
+                           onClick={e => updateSelectedVariant(varian)}
                             className={varian.id === selectedVariant.id ? 'active' : ''}
                              key={varian.id}>
                                  <img src={varian.images}  alt="Màu Đỏ" />
                                  </li>
                        })
                     }
-                    {/* <li className=""><img src="./images/red.jpg" alt="Màu Đỏ" /></li>
-                    <li className=""><img src="./images/blue.jpg" alt="Màu Xanh" /></li>
-                    <li className=""><img src="./images/black.jpg" alt="Màu Đen" /></li> */}
                 </ul>
             </div>
-        </div> <button className="add-to-cart">Add to cart</button>
+        </div> <button onClick={()=>handleAddtoCard()} className="add-to-cart">Add to cart</button>
     </div>
     )
 }

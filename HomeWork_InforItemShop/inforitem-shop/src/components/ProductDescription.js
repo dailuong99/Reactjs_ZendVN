@@ -1,21 +1,24 @@
 import React from 'react';
 
-function ProductDescription(){
+export default  function ProductDescription({ attrProducts, descriptions }){
     return(
       <div className="description">
       <ul className="extra-info">
-          <li>Chất liệu: polyester và thun</li>
+          {
+              attrProducts.map((o,key) =>{
+                  return <li key={key}>{o.name === ''? null : o.name + ' :'}{o.value}</li>
+              })
+          }
+          {/* <li>Chất liệu: polyester và thun</li>
           <li>Thoát mồ hôi tốt</li>
           <li>Áo thun cổ tròn thể thao Hiye chuyên được may từ chất liệu nilon thoáng mát</li>
           <li>Kết hợp thêm sợi thun tạo độ co giãn giúp người tiêu dùng thoải mái khi mặc</li>
-          <li>Chất liệu: polyester và thun</li>
+          <li>Chất liệu: polyester và thun</li> */}
       </ul>
-      <h2>Chất liệu bền chặt&nbsp;</h2>
-&lt;p&gt;Test hjskhfk h&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;span style="background-color:#8e44ad"&gt;fhsdjkfhsk&amp;nbsp; hsdjkfk&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
-<div>
-          <p>Mô tả: Áo thun cổ tròn thể thao Hiye chuyên được may từ chất liệu nilon thoáng mát và thoát mồ hôi tốt, kết hợp thêm sợi thun tạo độ co giãn giúp người tiêu dùng thoải mái khi mặc</p>
+      <div dangerouslySetInnerHTML={{
+           __html: descriptions
+        }}>
       </div>
-  </div>
+      </div>
     )
 }
-export default ProductDescription;
