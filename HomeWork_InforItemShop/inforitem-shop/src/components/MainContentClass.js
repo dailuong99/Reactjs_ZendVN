@@ -8,7 +8,7 @@ export default class MainContentClass extends Component {
     constructor(props) {
         super(props);
 
-        this.state = initData
+        this.state = initData;
     }
 
     updateSelectedVariant = (varian) => {

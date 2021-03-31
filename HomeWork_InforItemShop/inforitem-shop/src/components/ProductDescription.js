@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default  function ProductDescription({ attrProducts, descriptions }){
+    if(!attrProducts){
+        return null;
+      }
     return(
       <div className="description">
       <ul className="extra-info">
