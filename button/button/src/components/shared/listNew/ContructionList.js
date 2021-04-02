@@ -4,6 +4,9 @@ import ListNew from "./ListNew.js";
 import imgBig from '../../../assets/images/blog-1.jpg';
 import imgAvata from "../../../assets/images/john-doe.png";
 
+import Button from "../button/Button";
+import '../button/Button';
+
 export default function ContructionList({
     mainTitle = ""
 }) {
@@ -14,6 +17,7 @@ export default function ContructionList({
                     <div className="tcl-container">
                         <div class="main-title spacing">
                             <h2>Latest Articles</h2>
+                           
                         </div>
                         <div className="latest-news__list spacing">
                             <ListNew
@@ -41,7 +45,8 @@ export default function ContructionList({
                     <div className="tcl-container">
                         <div class="main-title spacing d-flex tcl-jc-between tcl-ais-center">
                             <h2>Popular Articles</h2>
-                            <a href="#" class="btn btn-default">View More</a>
+                            {/* <a href="#" class="btn btn-default">View More</a> */}
+                            <Button type='submit' classCustom="btn btn-default" name='View More' />
                         </div>
                         <div className="popular-news__list spacing">
                             <div className="popular-news__list--left">
@@ -79,7 +84,8 @@ export default function ContructionList({
                     <div className="tcl-container">
                         <div class="main-title spacing d-flex tcl-jc-between tcl-ais-center">
                             <h2>News List</h2>
-                            <a href="#" class="btn btn-default">View More</a>
+                            {/* <a href="#" class="btn btn-default">View More</a> */}
+                            <Button type='submit' classCustom="btn btn-default" name='View More' />
                         </div>
                         <div className="tcl-row">
 
