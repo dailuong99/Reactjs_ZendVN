@@ -61,11 +61,6 @@ body {
     margin-right: -1rem;
 }
 
-.tcl-justify-content-center {
-    justify-content: center;
-    display: flex;
-}
-
 .section {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -135,4 +130,11 @@ body {
     html {
         font-size: 100%;
     }
+}
+
+
+/* Đại viết thêm css */
+
+.ml-6x {
+    margin-left: 6px;
 }
