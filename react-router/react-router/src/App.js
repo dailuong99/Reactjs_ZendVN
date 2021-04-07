@@ -31,7 +31,7 @@ export default function App() {
               <Link to="/login">dang nhap</Link>
             </li>
             <li>
-              <Link to="/post/:slug">dang ki</Link>
+              <Link to="/post/postid">Post detail</Link>
             </li>
           </ul>
         </nav>
