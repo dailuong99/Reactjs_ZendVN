@@ -11,12 +11,13 @@ export default function ContructionList({
     mainTitle = ""
 }) {
     return (
-        <>
+        <> 
             {
                 mainTitle === 'Latest Articles' ? <div className="latest-news section">
                     <div className="tcl-container">
                         <div class="main-title spacing">
-                            <h2>Latest Articles</h2>
+                        <h2>{mainTitle}</h2>
+
                            
                         </div>
                         <div className="latest-news__list spacing">
@@ -44,7 +45,7 @@ export default function ContructionList({
                 mainTitle === 'Popular Articles' ? <div className="popular-news section bg-white-blue">
                     <div className="tcl-container">
                         <div class="main-title spacing d-flex tcl-jc-between tcl-ais-center">
-                            <h2>Popular Articles</h2>
+                        <h2>{mainTitle}</h2>
                             {/* <a href="#" class="btn btn-default">View More</a> */}
                             <Button type='submit' classCustom="btn btn-default" name='View More' />
                         </div>
@@ -83,7 +84,7 @@ export default function ContructionList({
                 mainTitle === 'News List' ? <div className="articles-list section">
                     <div className="tcl-container">
                         <div class="main-title spacing d-flex tcl-jc-between tcl-ais-center">
-                            <h2>News List</h2>
+                            <h2>{mainTitle}</h2>
                             {/* <a href="#" class="btn btn-default">View More</a> */}
                             <Button type='submit' classCustom="btn btn-default" name='View More' />
                         </div>
