@@ -8,6 +8,7 @@ function Button({
   type = 'button',
   variant = 'default',
   size = '',
+  sizetext='',
   className,
   loading,
   loadingPos = 'left',
@@ -20,7 +21,13 @@ function Button({
     'btn-default': variant === 'default',
     'btn-category': variant === 'category',
     'btn-primary': variant === 'primary',
-    'btn-size-large': size === 'large'
+    'btn-size-large': size === 'large',
+  })
+
+  const classesLink = classNames(className,  {
+    'btn-size-textL': sizetext === 'textlarge',
+    'btn-link': variant === 'link',
+
   })
 
   if (type === 'button') {
@@ -35,7 +42,7 @@ function Button({
 
   if (type === 'link') {
     return (
-      <a {...restProps} className={classes}>
+      <a {...restProps} className={classesLink}>
         { loading && loadingPos === 'left' && <Loading /> }
         { children }
         { loading && loadingPos === 'right' && <Loading /> }

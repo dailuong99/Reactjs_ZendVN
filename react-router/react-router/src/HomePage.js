@@ -1,3 +1,6 @@
+import Header from './components/Header/';
+import Footer from './components/Footer/';
+
 import Input from "./components/shared/Input";
 import { useState } from 'react';
 import Button from "./components/shared/button";
@@ -28,22 +31,26 @@ export default function HomePage() {
 
   return (
     <div>
+      <Header></Header>
       <div className="tcl-container">
-          <Row>
-            <Col xs={12}>
-              <ArticlesLatest />
-            </Col>
+        <Row>
+          <Col xs={12}>
+            <ArticlesLatest />
+          </Col>
+        </Row>
+      </div>
+      <Col >
+        <ArticlesPopular />
+      </Col>
+      <div className="tcl-container">
+        <Row>
+          <Col xs={12}>
+            <ArticlesList />
+          </Col>
+        </Row>
+      </div>
+      <Footer></Footer>
 
-            <Col xs={12}>
-              <ArticlesPopular />
-            </Col>
-
-            <Col xs={12}>
-              <ArticlesList />
-            </Col>
-          </Row>
-
-        </div>
     </div>
   )
 }
