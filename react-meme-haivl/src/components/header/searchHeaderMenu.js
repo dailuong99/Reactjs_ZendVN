@@ -12,7 +12,7 @@ export default function SearchHeaderMenu() {
         evt.preventDefault();
     
         if (searchStr.trim()) {
-          history.push('/search?q=' + searchStr);
+          history.push('/search?query=' + searchStr);
         }
       }
 

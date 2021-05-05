@@ -2,7 +2,7 @@ import { PostService } from "../../services/posts";
 
 
 export const ACT_FETCH_POSTS = 'ACT_FETCH_POSTS';
-
+export const ACT_SEARCH ='ACT_SEARCH';
 
 /**
  * ACTION CREATORS
@@ -25,6 +25,18 @@ export function actFetchPosts({
         }
     }
 }
+export function actSearch({
+    posts=[]
+
+}) {
+    return {
+        type: ACT_SEARCH,
+        payload: {
+            posts
+        }
+    }
+}
+
 
 /**
  * ACTION ASYNC
@@ -57,6 +69,31 @@ export const actFetchPostsAsync = ({
             }))
 
             console.log('posts', posts)
+        } catch (e) {
+
+        }
+    }
+}
+
+
+export const actSearchAsync = ({
+    query='',
+    ...restParams
+} = {}) => {
+    return async dispatch => {
+        try {
+            const response = await PostService.getSearch({
+                query,
+                ...restParams
+            });
+
+            const shortdataquery = response.data;
+            const posts = shortdataquery.posts;
+            dispatch(actSearch({
+                posts
+            }))
+
+            console.log('postcontent', posts)
         } catch (e) {
 
         }

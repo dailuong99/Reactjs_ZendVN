@@ -5,7 +5,7 @@ import Loading from "../shared/Loading"
 import queryString from 'query-string';
 import PageNotFound from "../PageNotFound";
 import { usePostsPaging } from "../hooks/usePostsPaging"
-import { actFetchPostsAsync } from "../../store/posts/actions"
+import {  actSearchAsync } from "../../store/posts/actions"
 import AvataPost from "../MainContent/AvataPost"
 import InfoPost from "../MainContent/AvataPost/InfoPost"
 import MainPost from "../MainContent/MainPost"
@@ -38,7 +38,7 @@ function handleMap(post) {
 export default function PostsSearch() {
     const dispatch = useDispatch();
     const location = useLocation();
-    const searchStr = queryString.parse(location.search).q;
+    const searchStr = queryString.parse(location.search).query;
     const [loadingFirst, setLoadingFirst] = useState(true);
 
     const {
@@ -47,15 +47,15 @@ export default function PostsSearch() {
         renderButtonLoadmore
     } = usePostsPaging({
         extraParams: {
-            search: searchStr
+            query: searchStr
         },
-        actionAsync: actFetchPostsAsync
+        actionAsync: actSearchAsync
     })
 
     useEffect(() => {
         if (searchStr) {
-            dispatch(actFetchPostsAsync({
-                search: searchStr
+            dispatch(actSearchAsync({
+                query: searchStr
             })).finally(() => {
                 setLoadingFirst(false)
             })
