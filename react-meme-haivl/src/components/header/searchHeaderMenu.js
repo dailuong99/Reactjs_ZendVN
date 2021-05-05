@@ -2,20 +2,38 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Input from '../shared/Input';
 
-
 export default function SearchHeaderMenu() {
     const history = useHistory();
     const [searchStr, setSearchStr] = useState('');
+
+
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+    
+        if (searchStr.trim()) {
+          history.push('/search?q=' + searchStr);
+        }
+      }
+
+    function handleChange(evt) {
+        setSearchStr(evt.target.value);
+      }
+
+
     return (
         <>
-            <form action="#">
-                {/* <label>
-                    <input type="search" name="search-text" className="form-control" placeholder="Nhập từ khóa ..." />
-                    <i className=" fa-search" />
-                </label> onChange={handleChange}*/}
-                        <Input placeholder="Nhập từ khoá tìm kiếm" type="search" value={searchStr}  />
-
-            </form>
+            <div className="ass1-header__search">
+                <form  onSubmit={handleSubmit}>
+                    <label>
+                        <Input placeholder="Nhập từ khoá tìm kiếm"
+                        type="search" 
+                        className="form-control" 
+                        value={searchStr} 
+                         onChange={handleChange} />
+                    </label>
+                </form>
+            </div>
         </>
     )
 }

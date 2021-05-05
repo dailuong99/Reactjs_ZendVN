@@ -45,10 +45,15 @@ export const actFetchPostsAsync = ({
 
             const shortdata = response.data;
             const posts = shortdata.posts;
-
+            const headers = response.headers;
+            const total = Number(headers['x-wp-total']);
+            const totalPages = Number(headers['x-wp-totalpages']);
 
             dispatch(actFetchPosts({
-                posts
+                posts,
+                total,
+                currPage,
+                totalPages
             }))
 
             console.log('posts', posts)

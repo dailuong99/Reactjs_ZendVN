@@ -23,10 +23,11 @@ export default function Header() {
                     <Link to="/" className="ass1-logo">
                         TCL Meme - LTD TODO(spam)
                     </Link>
+                    {/* left  header */}
                     <LeftHeadMenu></LeftHeadMenu>
-                    <div className="ass1-header__search">
-                        <SearchHeaderMenu></SearchHeaderMenu>
-                    </div>
+                    {/* search header */}
+                    <SearchHeaderMenu></SearchHeaderMenu>
+                    {/* right header */}
                     <RightHeaderMenu></RightHeaderMenu>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import PostDetail from './components/postDetail/index';
 import HistoryPost from './components/HistoryPost/index';
 import Profile from './components/profile/index';
 import ChangePassword from './components/changePassword/index';
+import PostsSearch from '../src/components/pages/PostsSearch';
 
 import {
   BrowserRouter as Router,
@@ -58,11 +59,15 @@ export default function App() {
               <PostDetail></PostDetail>
             </Route>
             <Route path="/changepass/:slug">
-            <ChangePassword></ChangePassword>
+              <ChangePassword></ChangePassword>
             </Route>
             <Route path="/profile/:slug">
               <Profile></Profile>
             </Route>
+            <Route path="/search" exact>
+              <PostsSearch></PostsSearch>
+            </Route>
+
             <Route path="/historypost">
               <HistoryPost></HistoryPost>
             </Route>

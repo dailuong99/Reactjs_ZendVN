@@ -1,12 +1,12 @@
 
-export default function MainPost({ listpost }) {
+export default function MainPost({ post }) {
     
 
     return (
         <>
-            <p>{listpost.post_content}</p>
+            <p>{post.post_content}</p>
             <div className="ass1-section__image">
-                <a href={listpost.url_image}><img src={listpost.url_image} alt="" /></a>
+                <a href={post.url_image}><img src={post.url_image} alt="" /></a>
             </div>
         </>
     )

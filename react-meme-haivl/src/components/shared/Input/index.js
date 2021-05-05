@@ -2,9 +2,7 @@ import './Input.css';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-// Input.defaultProps = {
-//   type: 'text'
-// }
+
 
 export default function Input({
     type = 'text',
@@ -41,27 +39,32 @@ export default function Input({
 
     const classesInput = classNames(className, {})
 
-    return ( <
-        > {
-            labelText ? < label > { labelText } < /label> : null
+    return (
+        <> {
+            labelText ? <label> {labelText} </label> : null
         } {
-            type === 'password' ?
-                < i
-            onClick = { onToggleShowPassword }
-            className = {
-                localType === 'password' ?
-                'toggle-password ion-eye' :
-                    'toggle-password ion-eye-disabled'
+                type === 'password' ?
+                    <i
+                        onClick={onToggleShowPassword}
+                        className={
+                            localType === 'password' ?
+                                'toggle-password ion-eye' :
+                                'toggle-password ion-eye-disabled'
+                        }
+                    /> : null
             }
-            />: null
-        } <
-        input type = { localType }
-        placeholder = { placeholder }
-        onChange = { _onChange }
-        value = { value }
-        className = { classesInput }
-        /> <
-        />
+           
+             <input type={localType}
+                placeholder={placeholder}
+                onChange={_onChange}
+                value={value}
+                className={classesInput}
+            />
+             {
+                 type === 'search' ?
+                 <i className='icon-Search' /> : null 
+            }
+        </>
     )
 }
 

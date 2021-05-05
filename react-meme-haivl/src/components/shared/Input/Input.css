@@ -1,6 +1,7 @@
 .form-control {
   position: relative;
-  margin-bottom: 1.25rem; }
+  /* margin-bottom: 1.25rem; */
+ }
   .form-control input {
     box-sizing: border-box;
     margin: 0;
@@ -31,3 +32,7 @@
       color: #5a67d8; }
     .form-control .toggle-password + input {
       padding-right: 3rem; }
+      [class^="icon-"] {
+        color: #a1a5ae;
+        font-size: 16px;
+      }
