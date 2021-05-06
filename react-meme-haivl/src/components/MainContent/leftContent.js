@@ -25,7 +25,7 @@ function handleMap(post) {
                 <div className="ass1-section__content" >
                     <MainPost post={post} > </MainPost>
                 </div> <div className="ass1-section__footer" >
-                    <CommnetCount post={post} > </CommnetCount>
+                    <CommnetCount  post={post}> </CommnetCount>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ export const PostService = {
         pagesize = 3,
         ...restParams // { search: '' }
     } = {}) {
-        return api.call().get('/post/getListPagination.php?', {
+        return api.call().get('/post/getListPagination.php', {
             params: {
                 currPage,
                 pagesize,
@@ -18,7 +18,7 @@ export const PostService = {
       query='',
    ...restParams
   } = {}) {
-      return api.call().get('/post/search.php?', {
+      return api.call().get('/post/search.php', {
           params: {
             query,
             ...restParams

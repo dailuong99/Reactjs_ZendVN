@@ -1,7 +1,7 @@
-export default function CommnetCount({post}) {
-if (post.count === null){
-    return null
-}
+export default function CommnetCount({ post }) {
+    if (post.count === null) {
+        return null
+    }
     return (
 
         <a href="#" className="ass1-section__btn-comment ass1-btn-icon">

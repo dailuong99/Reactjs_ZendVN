@@ -16,7 +16,7 @@ import Footer  from '../footer/index';
 
 function handleMap(post) {
     return (
-        <div className="ass1-section__item" key={post.USERID}>
+        <div className="ass1-section__item" key={post.PID}>
             <div className="ass1-section" >
                 <div className="ass1-section__head" >
                     <a href="bai-viet-chi-tiet.html"
@@ -41,6 +41,8 @@ export default function PostsSearch() {
     const searchStr = queryString.parse(location.search).query;
     const [loadingFirst, setLoadingFirst] = useState(true);
 
+
+  
     const {
         posts,
         totalElements,
