@@ -93,7 +93,8 @@ export default function PostsSearch() {
                     {/*sections*/}
                     <div className="row justify-content-center">
                         <div className="col-10">
-                          <div className="text-center p-3"><h4>kết quả tìm kiếm với từ khoá "{searchStr}"</h4></div> 
+                          <div className="text-center p-3"><h4>Có {posts.length} kết quả tìm kiếm với từ khoá "{searchStr}"</h4></div> 
+
                            {
                                 posts.map(returnHandleMap(true))
                             }
