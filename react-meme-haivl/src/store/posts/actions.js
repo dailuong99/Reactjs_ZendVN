@@ -89,11 +89,12 @@ export const actSearchAsync = ({
 
             const shortdataquery = response.data;
             const posts = shortdataquery.posts;
+            const resultlength = posts.length;
             dispatch(actSearch({
                 posts
             }))
 
-            console.log('postcontent', posts)
+            console.log('post', posts.length)
         } catch (e) {
 
         }
