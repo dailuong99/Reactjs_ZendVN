@@ -8,7 +8,7 @@ import { usePostsPaging } from '../hooks/usePostsPaging';
 function returnHandleMap(isSearch){
     function handleMap(post) {
         return (
-            <div className="ass1-section__item" key={post.USERID}>
+            <div className="ass1-section__item" key={post.PID}>
                 <div className="ass1-section" >
                     <div className="ass1-section__head" >
                         <a href="bai-viet-chi-tiet.html"

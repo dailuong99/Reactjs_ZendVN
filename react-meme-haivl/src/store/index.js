@@ -10,6 +10,8 @@ import logger from 'redux-logger'
 
 const rootReducer = combineReducers({
     Posts: postsReducer,
+    Categories: categoriesReducer,
+    Users: usersReducer
 })
 
 const arrayMiddlewares = [reduxThunk];

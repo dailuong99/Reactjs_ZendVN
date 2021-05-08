@@ -45,15 +45,6 @@ export default function PostsSearch() {
     const [loadingFirst, setLoadingFirst] = useState(true);
     const posts = useSelector(state => state.Posts.searchList)
 
-    // const {
-    //     posts,
-    //     renderButtonLoadmore
-    // } = usePostsPaging({
-    //     extraParams: {
-    //         query: searchStr
-    //     },
-    //     actionAsync: actSearchAsync
-    // })
 
     useEffect(() => {
         if (searchStr) {

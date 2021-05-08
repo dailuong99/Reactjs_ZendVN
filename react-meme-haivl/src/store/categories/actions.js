@@ -14,23 +14,20 @@ export function actFetchCategories({
 }
 
 export const actFetchCategoriesAsync = ({
-  page = 1,
-  per_page = 100
-} = {}) => {
+
+}={})=> {
   return async dispatch => {
     try {
-      const response = await CategoriesService.getList({
-        page,
-        per_page
-      });
+      const response = await CategoriesService.getList();
 
-      const categories = response.data;
+      const shortdata = response.data;
+      const categories = shortdata.categories;
 
       dispatch(actFetchCategories({
         categories
       }))
-
-    } catch(e) {
+      
+    } catch (e) {
 
     }
   }

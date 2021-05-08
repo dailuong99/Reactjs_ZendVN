@@ -15,14 +15,15 @@ export const PostService = {
         })
     },
     getSearch({
-      query='',
-   ...restParams
-  } = {}) {
-      return api.call().get('/post/search.php', {
-          params: {
-            query,
-            ...restParams
-          }
-      })
-  }
+        query = '',
+        ...restParams
+    } = {}) {
+        return api.call().get('/post/search.php', {
+            params: {
+                query,
+                ...restParams
+            }
+        })
+    },
+
 }

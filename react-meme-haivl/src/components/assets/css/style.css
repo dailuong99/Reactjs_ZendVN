@@ -2651,7 +2651,6 @@ select.form-control:focus {
 }
 
 .ass1-header__nav {
-    display: none;
     position: absolute;
     width: 100%;
     padding: 24px;

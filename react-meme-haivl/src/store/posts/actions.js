@@ -3,7 +3,6 @@ import { PostService } from "../../services/posts";
 
 export const ACT_FETCH_POSTS = 'ACT_FETCH_POSTS';
 export const ACT_SEARCH ='ACT_SEARCH';
-
 /**
  * ACTION CREATORS
  */
@@ -37,7 +36,6 @@ export function actSearch({
     }
 }
 
-
 /**
  * ACTION ASYNC
  */
@@ -68,7 +66,6 @@ export const actFetchPostsAsync = ({
                 totalPages
             }))
 
-            console.log('posts', posts)
         } catch (e) {
 
         }
@@ -89,12 +86,11 @@ export const actSearchAsync = ({
 
             const shortdataquery = response.data;
             const posts = shortdataquery.posts;
-            const resultlength = posts.length;
             dispatch(actSearch({
                 posts
             }))
 
-            console.log('post', posts.length)
+            console.log('post', posts)
         } catch (e) {
 
         }
