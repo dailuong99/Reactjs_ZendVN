@@ -8,8 +8,8 @@ const initUsersState = {
   token: 'vkldbsavkldbjsklav-jbdslkjvbs' //null la chua dang nhap
 }
 
-function reducer(usersState = initUsersState, action) {
-  console.log('userreducer run',action)
+function usersReducer(usersState = initUsersState, action) {
+  console.log('userreducer run',action);
   switch (action.type) {
     case LOGIN:
       return {
@@ -18,7 +18,7 @@ function reducer(usersState = initUsersState, action) {
           email: action.payload.email,
           password: action.payload.password
         },
-        token: action.payload.token
+        token: 'vkldbsavkldbjsklav-jbdslkjvbs'
       }
     case LOGOUT:
       return {
@@ -31,4 +31,4 @@ function reducer(usersState = initUsersState, action) {
   }
 }
 
-export default reducer;
+export default usersReducer;

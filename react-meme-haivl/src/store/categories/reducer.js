@@ -4,7 +4,7 @@ const initCategoriesState = {
   categoriesLists: []
 }
 
-function reducer(categoriesState = initCategoriesState, action) {
+function categoriesReducer(categoriesState = initCategoriesState, action) {
   switch (action.type) {
     case ACT_FETCH_CATEGORIES:
       return {
@@ -16,4 +16,4 @@ function reducer(categoriesState = initCategoriesState, action) {
   }
 }
 
-export default reducer;
+export default categoriesReducer;

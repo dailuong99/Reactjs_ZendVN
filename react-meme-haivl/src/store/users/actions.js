@@ -8,7 +8,7 @@ export const LOGOUT='LOGOUT';
 
 
   export function actLogout(){
-
+console.log("dispatch actlogout");
     return{
         type:LOGOUT
     }

@@ -12,7 +12,7 @@ const initPostsState = {
     searchList:[]
 }
 
-function reducer(postsState = initPostsState, action) {
+function postsReducer(postsState = initPostsState, action) {
     switch (action.type) {
         case ACT_FETCH_POSTS:
             return {
@@ -37,4 +37,4 @@ function reducer(postsState = initPostsState, action) {
     }
 }
 
-export default reducer;
+export default postsReducer;

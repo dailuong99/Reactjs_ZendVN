@@ -5,7 +5,7 @@ import { actLogout } from "../../store/users/actions"
 
 export default function RightContent() {
     const dispatch = useDispatch();
-    const token = useSelector(state => state.Users.token)
+    const token = useSelector(rootstate => rootstate.Users.token)
     const history = useHistory();
 
     useEffect(() => {
