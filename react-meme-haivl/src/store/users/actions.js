@@ -1,50 +1,62 @@
-import { CommentsService } from "../../services/comments";
 
 
-export const ACT_FETCH_COMMENTS = 'ACT_FETCH_COMMENTS';
+export const LOGIN = 'LOGIN';
+export const LOGOUT='LOGOUT';
 /**
  * ACTION CREATORS
  */
 
-export function actFetchComments({
-    comments = [],
+
+  export function actLogout(){
+
+    return{
+        type:LOGOUT
+    }
+  }
+  
+
+export function actLogin({
+    email,
+ password
 }) {
     return {
-        type: ACT_FETCH_COMMENTS,
+        type: LOGIN,
         payload: {
-            comments,
+            email,
+            password
         }
     }
 }
-
 
 /**
  * ACTION ASYNC
  */
 
-export const actFetchCommentsAsync = ({
-    postid = 28,
-    ...restParams
-} = {}) => {
-    return async dispatch => {
-        try {
-            const response = await CommentsService.getList({
-                postid,
-                ...restParams
-            });
 
-            const comments = response.data;
 
-            console.log(comments)
+// export const actPostLoginAsync = ({
+//     username= '',
+//     password= '',
+//       ...restParams
+// } = {}) => {
+//     return async dispatch => {
+//         try {
+//             const response = await LoginService.getList({
+//                 username,
+//                 password,
+//                 ...restParams
+//             });
+//             const loginuser = response.data;
+
+//             console.log(loginuser)
             
-            dispatch(actFetchComments({
-                comments
-            }))
+//             dispatch(actPostLogin({
+//                 loginuser
+//             }))
             
-            console.log(comments)
-        } catch (e) {
+//             console.log(loginuser)
+//         } catch (e) {
 
-        }
-    }
-}
-
+//         }
+//     }
+// }

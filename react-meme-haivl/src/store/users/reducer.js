@@ -1,15 +1,29 @@
-import { ACT_FETCH_COMMENTS } from "./actions";
+import { LOGIN, LOGOUT } from "./actions";
 
 const initUsersState = {
-  commentsList: []
+  user: {
+    email: '',
+    password: ''
+  },
+  token: 'vkldbsavkldbjsklav-jbdslkjvbs' //null la chua dang nhap
 }
 
 function reducer(usersState = initUsersState, action) {
+  console.log('userreducer run',action)
   switch (action.type) {
-    case ACT_FETCH_COMMENTS:
+    case LOGIN:
       return {
         ...usersState,
-        commentsList: action.payload.comments
+        user: {
+          email: action.payload.email,
+          password: action.payload.password
+        },
+        token: action.payload.token
+      }
+    case LOGOUT:
+      return {
+        ...usersState,
+        token: ''
       }
     default:
       return usersState;

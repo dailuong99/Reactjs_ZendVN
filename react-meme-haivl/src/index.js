@@ -9,7 +9,7 @@ import '../src/components/assets/lib/bootstrap/bootstrap.min.css';
 import '../src/components/assets/fonts/font-awesome/css/font-awesome.css';
 
 import { Provider } from 'react-redux'
-import store from './store'
+import store from './store';
 
 ReactDOM.render(
   <React.StrictMode>

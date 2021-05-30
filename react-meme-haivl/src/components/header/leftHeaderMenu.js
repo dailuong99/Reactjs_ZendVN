@@ -12,9 +12,12 @@ export default function LeftHeadMenu() {
     const categories = useSelector(state => state.Categories.categoriesLists)
 
     const [hideCategories, showCategories] = useState(false);
+
     function toggleCategories() {
         showCategories(wasOpened => !wasOpened);
     }
+
+
 
     return (
         <>
@@ -42,8 +45,8 @@ export default function LeftHeadMenu() {
                                                 )
                                             })
                                         }
-
                                     </ul>
+
 
                                 </div>
                                 <div className="ass1-header__menu-transition" />

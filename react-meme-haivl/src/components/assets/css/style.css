@@ -2618,7 +2618,10 @@ select.form-control:focus {
     position: relative;
 }
 
-
+.is-error{
+color: red;    
+font-weight:bold;
+}
 /*.ass1-header__menu > li a:before {
   content: '';
   position: absolute;
