@@ -1,30 +1,17 @@
-import { LOGIN, LOGOUT } from "./actions";
+import { SET_USER_INFOR, LOGOUT } from "./actions";
 
 const initUsersState = {
-  user: {
-    email: '',
-    password: ''
-  },
-  token: 'vkldbsavkldbjsklav-jbdslkjvbs' //null la chua dang nhap
+  currrentUser: null
 }
 
 function usersReducer(usersState = initUsersState, action) {
-  console.log('userreducer run',action);
   switch (action.type) {
-    case LOGIN:
+    case SET_USER_INFOR:
       return {
         ...usersState,
-        user: {
-          email: action.payload.email,
-          password: action.payload.password
-        },
-        token: 'vkldbsavkldbjsklav-jbdslkjvbs'
+        currrentUser : action.payload.user
       }
-    case LOGOUT:
-      return {
-        ...usersState,
-        token: ''
-      }
+
     default:
       return usersState;
 

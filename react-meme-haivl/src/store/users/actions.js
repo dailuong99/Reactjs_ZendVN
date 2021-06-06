@@ -1,29 +1,24 @@
+const nameSpace = 'user';
 
-
-export const LOGIN = 'LOGIN';
-export const LOGOUT='LOGOUT';
+export const SET_USER_INFOR = `${nameSpace}SET_USER_INFOR`;
+export const LOGOUT = 'LOGOUT';
 /**
  * ACTION CREATORS
  */
 
 
-  export function actLogout(){
-console.log("dispatch actlogout");
-    return{
-        type:LOGOUT
-    }
-  }
-  
-
-export function actLogin({
-    email,
- password
-}) {
+export function actLogout() {
+    console.log("dispatch actlogout");
     return {
-        type: LOGIN,
+        type: LOGOUT
+    }
+}
+
+export const actSetUserInfor = ({ User })=>{
+    return {
+        type: SET_USER_INFOR,
         payload: {
-            email,
-            password
+            User
         }
     }
 }
@@ -33,30 +28,3 @@ export function actLogin({
  */
 
 
-
-// export const actPostLoginAsync = ({
-//     username= '',
-//     password= '',
-//       ...restParams
-// } = {}) => {
-//     return async dispatch => {
-//         try {
-//             const response = await LoginService.getList({
-//                 username,
-//                 password,
-//                 ...restParams
-//             });
-//             const loginuser = response.data;
-
-//             console.log(loginuser)
-            
-//             dispatch(actPostLogin({
-//                 loginuser
-//             }))
-            
-//             console.log(loginuser)
-//         } catch (e) {
-
-//         }
-//     }
-// }

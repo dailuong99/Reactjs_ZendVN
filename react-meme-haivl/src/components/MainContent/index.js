@@ -3,10 +3,13 @@ import LeftContent from './leftContent';
 import RightContent from './rightContent';
 import Header from './../header/index';
 import Footer from './../footer/index';
+import { useSelector } from 'react-redux';
 
 
 
 export default function MainContent() {
+    const state = useSelector(rootstate => rootstate);
+    console.log(state)
 
 
     return (
