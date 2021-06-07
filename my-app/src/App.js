@@ -4,17 +4,16 @@ import React, { useState } from 'react'
 
 
 function App() {
- const [state,setState] = useState('');
+ const [state,steState] = useState('');
 
 function handleChangeName(e){
-  setState(e.target.value)
+  return steState(e.target.value)
 }
+
   return (
     <div>
       <input onChange={handleChangeName}/>
-      <span>
-        {state}
-      </span>
+      <span> {state}</span>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import usersReducer from './users/reducer';
 import postsReducer from './posts/reducer';
 import authReducer from './auth/reducer';
 import categoriesReducer from './categories/reducer';
+import appReducer from './app/reducer';
 
 import reduxThunk from 'redux-thunk';
 import logger from 'redux-logger'
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     Posts: postsReducer,
     Categories: categoriesReducer,
     Users: usersReducer,
-    Auth: authReducer
+    Auth: authReducer,
+    App :appReducer
 })
 
 const arrayMiddlewares = [reduxThunk];
