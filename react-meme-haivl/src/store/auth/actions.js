@@ -1,6 +1,7 @@
 
 import { Storage } from '../../helpers';
 import { authService } from '../../services/auth';
+import { actShowLoading } from '../app/action';
 import { actSetUserInfor } from './../users/actions';
 
 const nameSpace = 'auth';
@@ -20,7 +21,9 @@ export const actLoginSuccess = ({ token }) => {
 export const asyncHandleLogin = ({ email, password }) => {
   return async (dispatch) => {
     try {
+      dispatch(actShowLoading());
       const res = await authService.login({ email, password });
+      dispatch(actHideLoading())
       if (res.data.status !== 200) {
         return {
           ok: false,
@@ -37,9 +40,10 @@ export const asyncHandleLogin = ({ email, password }) => {
         }
       }
     } catch (err) {
+      dispatch(actHideLoading())
       return {
         ok: false,
-        error: err
+        error: err.message
       }
     }
   }

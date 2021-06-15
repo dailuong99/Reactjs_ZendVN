@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     Categories: categoriesReducer,
     Users: usersReducer,
     Auth: authReducer,
-    App :appReducer
+    App: appReducer
 })
 
 const arrayMiddlewares = [reduxThunk];

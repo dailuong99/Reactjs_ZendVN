@@ -2944,6 +2944,7 @@ font-weight:bold;
     display: block;
     margin: 0 auto;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .ass1-login__form .avatar:before {

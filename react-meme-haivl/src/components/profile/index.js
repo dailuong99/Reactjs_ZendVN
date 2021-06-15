@@ -1,38 +1,105 @@
-import Footer from "../footer";
-import Header from './../header/index';
+import { useEffect, useMemo, useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import userAuth from "../../helpers/hooks/userAuth"
+import userUserId from "../../helpers/hooks/useUserId"
+import { asyncGetUserById, asyncUpdateProfile } from "../../store/users/actions";
+import defaultAvata from './../assets/images/defaultavata.png';
+import { UserProfileView } from "./userProfile.view";
+
+const initStateObjFileAvata = {
+  file: null,
+  previewAvata: ''
+}
 
 export default function Profile() {
-    return (
-        <>
-            <Header></Header>
+  userAuth();
+  const dispatch = useDispatch();
+  const userid = userUserId();
+  const currrentUser = useSelector(state => state.Users.currrentUser);
+  const [objFileAvata, setObjFileAvata] = useState(initStateObjFileAvata)
+  const [userInfor, setUserInfor] = useState(null);
 
-            <main>
-  <div className="ass1-login">
-    <div className="ass1-login__content">
-      <p>Profile</p>
-      <div className="ass1-login__form">
-        <div className="avatar">
-          <img src="https://bodiezpro.com/wp-content/uploads/2015/09/medium-default-avatar.png" alt="" />
-        </div>
-        <form action="#">
-          <input type="text" className="form-control" placeholder="Tên ..." required />
-          <select className="form-control">
-            <option value>Giới tính</option>
-            <option value={1}>Nam</option>
-            <option value={0}>Nữ</option>
-          </select>
-          <input type="file" name="avatar" placeholder="Ảnh đại diện" className="form-control" />
-          <textarea className="form-control" cols={30} rows={5} placeholder="Mô tả ngắn ..." defaultValue={""} />
-          <div className="ass1-login__send justify-content-center">
-            <button type="submit" className="ass1-btn">Cập nhật</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</main>
+  useEffect(() => {
+    setUserInfor(currrentUser)
+  }, [currrentUser])
 
-            <Footer></Footer>
-        </>
-    )
+  useEffect(() => {
+    dispatch(asyncGetUserById({ userid }))
+      .then(res => {
+        if (!res.ok) {
+          alert(res.error)
+        }
+      })
+  }, [userid]);
+
+
+  const onChangeData = (key) => (e) => {
+    setUserInfor({
+      ...userInfor,
+      [key]: e.target.value
+    })
+  }
+
+  const handleChangeFile = (e) => {
+    const listFile = e.target.files;
+    if (listFile.length) {
+      const file = listFile[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setObjFileAvata({
+          file,
+          previewAvata: reader.result
+        })
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const finalAvata = useMemo(() => {
+    if (!objFileAvata.file) {
+      return userInfor?.profilepicture || defaultAvata
+    }
+
+    if (objFileAvata.file && objFileAvata.previewAvata) {
+      return objFileAvata.previewAvata
+    }
+    return defaultAvata
+  }, [objFileAvata, userInfor])
+
+  const handleCickChangeAvata = () => {
+    const inputFile = document.getElementById('fileAvata');
+    if (inputFile && inputFile.click) {
+      inputFile.click();
+    }
+  }
+
+  const handleSubmitSaveInfo = (e) => {
+    e.preventDefault();
+    const dataInforUser = {
+      avatar: objFileAvata.file,
+      description: userInfor.description,
+      gender: userInfor.gender,
+      fullname: userInfor.fullname
+    }
+
+    dispatch(asyncUpdateProfile(dataInforUser))
+      .then(res => {
+        if (res.ok) {
+          setObjFileAvata(initStateObjFileAvata)
+        }
+      })
+  }
+
+  const injectedProps = {
+    handleCickChangeAvata,
+    finalAvata,
+    onChangeData,
+    userInfor,
+    handleChangeFile,
+    handleSubmitSaveInfo
+  }
+
+  return (
+    <UserProfileView {...injectedProps}></UserProfileView>
+  )
 }

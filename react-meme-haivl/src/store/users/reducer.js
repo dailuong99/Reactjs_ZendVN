@@ -1,4 +1,4 @@
-import { SET_USER_INFOR, LOGOUT } from "./actions";
+import { SET_USER_INFOR } from "./actions";
 
 const initUsersState = {
   currrentUser: null
@@ -10,7 +10,7 @@ function usersReducer(usersState = initUsersState, action) {
       return {
         ...usersState,
         currrentUser : action.payload.user
-      }
+      };
 
     default:
       return usersState;
