@@ -1,3 +1,4 @@
+import { LOGOUT_SUCCESS } from "../auth/actions";
 import { SET_USER_INFOR } from "./actions";
 
 const initUsersState = {
@@ -9,9 +10,13 @@ function usersReducer(usersState = initUsersState, action) {
     case SET_USER_INFOR:
       return {
         ...usersState,
-        currrentUser : action.payload.user
+        currrentUser: action.payload.user
       };
-
+    case LOGOUT_SUCCESS:
+      return {
+        ...usersState,
+        currrentUser: null
+      }
     default:
       return usersState;
 

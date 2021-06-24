@@ -68,11 +68,10 @@ export const asyncUpdateProfile = ({
             if (avatar) {
                 formData.append('avatar', avatar);
             }
-            console.log('formData', formData)
+
             dispatch(actShowLoading());
             const res = await userService.updateProfile(formData);
             dispatch(actHideLoading());
-            console.log('res', res)
 
             if (res?.data?.status === 200) {
                 const user = res.data.user;

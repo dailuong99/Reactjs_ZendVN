@@ -8,7 +8,7 @@ const nameSpace = 'auth';
 
 
 export const LOGIN_SUCCESS = `${nameSpace}LOGIN_SUCCESS`;
-
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const actLoginSuccess = ({ token }) => {
   return {
     type: LOGIN_SUCCESS,
@@ -17,6 +17,15 @@ export const actLoginSuccess = ({ token }) => {
     }
   }
 }
+
+export const actLogoutSuccess = () => {
+  Storage.removeToken()
+  return {
+    type: LOGOUT_SUCCESS,
+    payload: {}
+  }
+}
+
 
 export const asyncHandleLogin = ({ email, password }) => {
   return async (dispatch) => {

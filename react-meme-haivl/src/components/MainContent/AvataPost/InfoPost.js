@@ -33,7 +33,7 @@ export default function InfoPost({post}) {
                 />
         }
         return     <Link
-         to={PATHS.USER_DETAIL} 
+         to={PATHS.USER_DETAIL.replace(":user_id", post.USERID)} 
          className="ass1-section__name"
        >
         {post.fullname}

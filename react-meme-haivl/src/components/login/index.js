@@ -7,7 +7,6 @@ import LoginForm from './loginForm';
 import { asyncHandleLogin } from './../../store/auth/actions';
 import {PATHS} from '../../constants/path';
 import { userNotAuth } from '../../helpers';
-import { actHideLoading, actShowLoading } from '../../store/app/action';
 
 
 export default function Login() {

@@ -2,6 +2,7 @@ export const PATHS = {
     CHANGE_PASSWORD: "/change_password",
     HOMEPAGE: '/',
     LOGIN: '/login',
+    LOGOUT: '/logout',
     SEARCH_RESULT: '/search',
     POST_CREATE: '/post/create',
     POST_DETAIL: '/post/:post_id',

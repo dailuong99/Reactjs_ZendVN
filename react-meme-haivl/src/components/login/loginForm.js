@@ -21,9 +21,6 @@ export default function LoginForm({ handleLogin }) {
 
     return (
         <div className="ass1-login">
-            {/* <div className="ass1-login__logo">
-            <Link to="/" className="ass1-logo">Home</Link>
-        </div> */}
             <div className="ass1-login__content">
                 <p>Đăng nhập</p>
                 <div className="ass1-login__form">

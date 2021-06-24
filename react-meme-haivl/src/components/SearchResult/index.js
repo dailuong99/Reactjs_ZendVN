@@ -29,6 +29,8 @@ export default function SearchResult() {
         dispatch(actSearchAsync({ query }))
     }, [query]);
 
+  
+
     return (
         <div className="container">
            
