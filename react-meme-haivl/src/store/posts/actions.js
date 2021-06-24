@@ -1,98 +1,91 @@
-import { PostService } from "../../services/posts";
+import PostService from "./../../services/posts";
+import { actHideLoading, actShowLoading } from "../app/action";
 
 
 export const ACT_FETCH_POSTS = 'ACT_FETCH_POSTS';
-export const ACT_SEARCH ='ACT_SEARCH';
+export const ACT_SEARCH = 'ACT_SEARCH';
 /**
  * ACTION CREATORS
  */
 
-export function actFetchPosts({
-    posts = [],
-    total,
-    page,
-    totalPages
-
-}) {
-    return {
-        type: ACT_FETCH_POSTS,
-        payload: {
-            posts,
-            total,
-            page,
-            totalPages
-        }
+export const actFetchPosts = ({ posts }) => ({
+    type: ACT_FETCH_POSTS,
+    payload: {
+        posts
     }
-}
-export function actSearch({
-    posts=[]
+})
 
-}) {
-    return {
-        type: ACT_SEARCH,
-        payload: {
-            posts
-        }
+export const actSearch = ({ posts }) => ({
+    type: ACT_SEARCH,
+    payload: {
+        posts
     }
-}
+})
 
 /**
  * ACTION ASYNC
  */
 
-export const actFetchPostsAsync = ({
-    currPage = 1,
-    pagesize = 3,
-    ...restParams
-} = {}) => {
-    return async dispatch => {
+export const actFetchPostsAsync = ({ currPage =1, pagesize=5 } = {}) => {
+    return async (dispatch) => {
         try {
-            const response = await PostService.getList({
+            dispatch(actShowLoading())
+            const res = await PostService.getList({
                 currPage,
                 pagesize,
-                ...restParams
             });
+            dispatch(actHideLoading())
 
-            const shortdata = response.data;
-            const posts = shortdata.posts;
-            const headers = response.headers;
-            const total = Number(headers['x-wp-total']);
-            const totalPages = Number(headers['x-wp-totalpages']);
-
-            dispatch(actFetchPosts({
-                posts,
-                total,
-                currPage,
-                totalPages
-            }))
-
-        } catch (e) {
-
+            if (res?.data?.status === 200) {
+                const posts = res.data.posts;
+                dispatch(actFetchPosts({ posts }))
+                return {
+                    ok: true,
+                    data: res.data.posts
+                }
+            }
+            return {
+                ok: false,
+                error: res.data.message
+            }
+        } catch (err) {
+            dispatch(actHideLoading())
+            return {
+                ok: false,
+                error: err.message
+            }
         }
     }
 }
 
 
-export const actSearchAsync = ({
-    query='',
-    ...restParams
-} = {}) => {
-    return async dispatch => {
+export const actSearchAsync = ({ query } = {}) => {
+    return async (dispatch) => {
         try {
-            const response = await PostService.getSearch({
-                query,
-                ...restParams
+            dispatch(actShowLoading())
+            const res = await PostService.getSearch({
+                query
             });
+            dispatch(actHideLoading())
 
-            const shortdataquery = response.data;
-            const posts = shortdataquery.posts;
-            dispatch(actSearch({
-                posts
-            }))
-
-            console.log('post', posts)
-        } catch (e) {
-
+            if (res?.data?.status === 200) {
+                const posts = res.data.posts;
+                dispatch(actSearch({ posts }))
+                return {
+                    ok: true,
+                    data: res.data.posts
+                }
+            }
+            return {
+                ok: false,
+                error: res.data.message
+            }
+        } catch (err) {
+            dispatch(actHideLoading())
+            return {
+                ok: false,
+                error: err.message
+            }
         }
     }
 }

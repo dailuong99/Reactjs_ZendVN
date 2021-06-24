@@ -1,13 +1,13 @@
-import { apilogin } from './apilogin';
+import { api } from './apilogin';
 
 export const userService = {
     getUserById({ userid }) {
-        return apilogin
+        return api
             .callWithAuth()
             .get(`/member/member.php?userid=${userid}`);
     },
     updateProfile(formData){
-        return apilogin
+        return api
             .callWithAuth({'accept' :'multipart/form-data'})
             .post('/member/update.php',formData);
     }

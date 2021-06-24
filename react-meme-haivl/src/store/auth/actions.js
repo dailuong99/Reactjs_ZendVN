@@ -1,7 +1,7 @@
 
 import { Storage } from '../../helpers';
 import { authService } from '../../services/auth';
-import { actShowLoading } from '../app/action';
+import { actHideLoading, actShowLoading } from '../app/action';
 import { actSetUserInfor } from './../users/actions';
 
 const nameSpace = 'auth';

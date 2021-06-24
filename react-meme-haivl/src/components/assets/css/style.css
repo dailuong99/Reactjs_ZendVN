@@ -2678,11 +2678,13 @@ font-weight:bold;
 
 .ass1-header__nav>.container ul {
     margin: 15px 0;
-    flex-direction: column;
+    flex-direction: row;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 768px) {
@@ -2693,6 +2695,7 @@ font-weight:bold;
 
 .ass1-header__nav>.container ul li {
     text-align: center;
+    width: 25%;
 }
 
 .ass1-header__nav>.container ul li:not(:first-child) {

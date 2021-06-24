@@ -1,29 +1,18 @@
-import { api } from './api';
+import { api } from './apilogin';
 
-export const PostService = {
+ const PostService = {
     getList({
-        currPage = 1,
-        pagesize = 3,
-        ...restParams // { search: '' }
-    } = {}) {
-        return api.call().get('/post/getListPagination.php', {
-            params: {
-                currPage,
-                pagesize,
-                ...restParams
-            }
-        })
+        currPage , pagesize 
+    } ) {
+        return api
+        .call()
+        .get(`/post/getListPagination.php?pagesize=${pagesize}&currPage=${currPage}`);
     },
-    getSearch({
-        query = '',
-        ...restParams
-    } = {}) {
-        return api.call().get('/post/search.php', {
-            params: {
-                query,
-                ...restParams
-            }
-        })
+    getSearch({ query }) {
+        return api
+        .call()
+        .get(`/post/search.php?query=${query}`)
     },
 
 }
+export default PostService;

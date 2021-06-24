@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
+import { PATHS } from "../../constants/path";
 
 export default function RightHeaderMenu() {
-
     return (
         <>
-            <a href="#" className="ass1-header__btn-upload ass1-btn">
+            <Link to={PATHS.POST_CREATE} className="ass1-header__btn-upload ass1-btn">
                 <i className="icon-Upvote" /> Upload
-                      </a>
-            <a href="dang-nhap.html" className="ass1-header__btn-upload ass1-btn">
+            </Link>
+            <Link to={PATHS.LOGIN} className="ass1-header__btn-upload ass1-btn">
                 Login
-                   </a>
+            </Link>
         </>
     )
 }

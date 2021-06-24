@@ -1,7 +1,7 @@
 // Cấu hình tất cả thông tin axios ở trong đây
 import axios from 'axios';
 import Storage from './../helpers/storage'
-export const apilogin = {
+export const api = {
   call: function () {
     return axios.create({
       baseURL: process.env.REACT_APP_BASE_URL,

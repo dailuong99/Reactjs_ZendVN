@@ -35,7 +35,7 @@ export  function UserProfileView({
             <textarea
               value={userInfor?.description || ""}
               onChange={onChangeData('description')}
-              className="form-control" cols={30} rows={5} placeholder="Mô tả ngắn ..." defaultValue={""} />
+              className="form-control" cols={30} rows={5} placeholder="Mô tả ngắn ..."  />
             <div className="ass1-login__send justify-content-center">
               <button type="button" 
               onClick={handleSubmitSaveInfo}

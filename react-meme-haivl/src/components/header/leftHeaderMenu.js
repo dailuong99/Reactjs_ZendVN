@@ -1,47 +1,49 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
+import { PATHS } from "../../constants/path";
 import { actFetchCategoriesAsync } from "../../store/categories/actions";
+import { Link, useLocation } from "react-router-dom";
 
 export default function LeftHeadMenu() {
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(actFetchCategoriesAsync());
-    }, [])
+    const location = useLocation();
 
     const categories = useSelector(state => state.Categories.categoriesLists)
 
     const [hideCategories, showCategories] = useState(false);
 
-    function toggleCategories() {
-        showCategories(wasOpened => !wasOpened);
+    function toggleCategories(e) {
+        e.preventDefault()
+        showCategories(!hideCategories);
     }
 
+    useEffect(() => {
+        console.log(location)
+        showCategories(false);
+    }, [location])
 
+    useEffect(() => { 
+        dispatch(actFetchCategoriesAsync());
+    }, [])
+
+
+  
 
     return (
         <>
             <nav>
                 <ul className="ass1-header__menu">
                     <li>
-                        <a href="#" onClick={toggleCategories} >Danh mục</a>
+                        <a href="/" onClick={toggleCategories} >Danh mục</a>
                         {hideCategories && (
                             <div className="ass1-header__nav" >
                                 <div className="container">
-                                    {/* <ul>
-                                            {
-                                             categories.slice(0,5).map(categori => {
-                                                    return (
-                                                        <li key={categori.id}><a href="index.html" categori={categori}>{categori.text}</a></li>
-                                                    )
-                                                })
-                                            }
-                                        </ul> */}
                                     <ul>
                                         {
                                             categories.map(categori => {
+                                                const url = PATHS.POST_LIST_CATEGORIES.replace(':category_id', categori.id)
                                                 return (
-                                                    <li key={categori.id}><a href="index.html" categori={categori}>{categori.text}</a></li>
+                                                    <li key={categori.id}><Link to={url} >{categori.text}</Link></li>
                                                 )
                                             })
                                         }
