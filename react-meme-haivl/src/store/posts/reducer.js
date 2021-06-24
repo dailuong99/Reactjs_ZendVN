@@ -12,6 +12,13 @@ function postsReducer(postsState = initPostsState, action) {
 
         case ACT_FETCH_POSTS:
             const newPosts = action.payload.posts;
+            const currPage = action.payload.currPage;
+            if (currPage === 1) {
+                return {
+                    ...postsState,
+                    listNewItem: newPosts
+                }
+            }
             return {
                 ...postsState,
                 listNewItem: [

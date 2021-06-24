@@ -13,7 +13,7 @@ export default function SearchResult() {
     const location = useLocation();
     const dispatch = useDispatch();
     const searchLists = useSelector(state => state.Posts.searchList);
-console.log("searchLists",searchLists)
+
     const query = useMemo(() => {
         const parsed = queryString.parse(location.search);
 

@@ -18,7 +18,6 @@ export default function LeftHeadMenu() {
     }
 
     useEffect(() => {
-        console.log(location)
         showCategories(false);
     }, [location])
 

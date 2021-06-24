@@ -8,10 +8,11 @@ export const ACT_SEARCH = 'ACT_SEARCH';
  * ACTION CREATORS
  */
 
-export const actFetchPosts = ({ posts }) => ({
+export const actFetchPosts = ({ posts,currPage }) => ({
     type: ACT_FETCH_POSTS,
     payload: {
-        posts
+        posts,
+        currPage
     }
 })
 
@@ -38,7 +39,7 @@ export const actFetchPostsAsync = ({ currPage =1, pagesize=5 } = {}) => {
 
             if (res?.data?.status === 200) {
                 const posts = res.data.posts;
-                dispatch(actFetchPosts({ posts }))
+                dispatch(actFetchPosts({ posts, currPage}))
                 return {
                     ok: true,
                     data: res.data.posts
