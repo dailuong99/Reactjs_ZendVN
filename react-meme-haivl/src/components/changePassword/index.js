@@ -1,12 +1,9 @@
-import Footer from "../footer";
 import Input from "../shared/Input";
-import Header from './../header/index';
 import Button from './../shared/Button/index';
 
 export default function ChangePassword() {
     return (
         <>
-            <Header></Header>
             <main>
                 <div className="ass1-login">
                     <div className="ass1-login__content">
@@ -30,7 +27,6 @@ export default function ChangePassword() {
                     </div>
                 </div>
             </main>
-            <Footer></Footer>
         </>
     )
 }

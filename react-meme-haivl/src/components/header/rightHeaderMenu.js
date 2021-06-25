@@ -13,7 +13,6 @@ export default function RightHeaderMenu() {
     const dispatch = useDispatch();
     const userid = userUserId();
     const currUser = useSelector(state => state.Users.currrentUser);
-    console.log('currUser', currUser)
 
     useEffect(() => {
         dispatch(asyncGetUserById({ userid }))

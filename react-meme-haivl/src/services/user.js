@@ -6,10 +6,16 @@ export const userService = {
             .callWithAuth()
             .get(`/member/member.php?userid=${userid}`);
     },
-    updateProfile(formData){
+    updateProfile(formData) {
         return api
-            .callWithAuth({'accept' :'multipart/form-data'})
-            .post('/member/update.php',formData);
+            .callWithAuth({ 'accept': 'multipart/form-data' })
+            .post('/member/update.php', formData);
+    },
+    getListPostByUserId({ userid }) {
+        return api
+            .callWithAuth()
+            .get(`/post/getListPostUserID.php?userid=${userid}`);
+
     }
 }
 

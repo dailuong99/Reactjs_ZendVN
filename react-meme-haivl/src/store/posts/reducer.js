@@ -4,7 +4,8 @@ import {
 
 const initPostsState = {
     listNewItem: [],
-    searchList: []
+    searchList: [],
+    hashUserPostData:{}
 }
 
 function postsReducer(postsState = initPostsState, action) {

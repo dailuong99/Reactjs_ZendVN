@@ -7,6 +7,7 @@ import Profile from "../components/profile/index";
 
 import {PATHS} from './../constants/path';
 import SearchResult from "../components/SearchResult";
+import ChangePassword from "../components/changePassword";
 
 export const Routers = [
     {
@@ -18,7 +19,11 @@ export const Routers = [
         path: PATHS.REGISTER,
         exact: true,
         component: Register
-    },  {
+    }, {
+        path: PATHS.CHANGE_PASSWORD,
+        exact: true,
+        component: ChangePassword
+    }, {
         path: PATHS.HOMEPAGE,
         exact: true,
         component: MainContent

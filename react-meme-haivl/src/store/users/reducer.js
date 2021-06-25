@@ -1,8 +1,9 @@
 import { LOGOUT_SUCCESS } from "../auth/actions";
-import { SET_USER_INFOR } from "./actions";
+import { SET_USER_DETAIL, SET_USER_INFOR } from "./actions";
 
 const initUsersState = {
-  currrentUser: null
+  currrentUser: null,
+  hashUserData: {}
 }
 
 function usersReducer(usersState = initUsersState, action) {
@@ -16,6 +17,27 @@ function usersReducer(usersState = initUsersState, action) {
       return {
         ...usersState,
         currrentUser: null
+      }
+    case SET_USER_DETAIL:
+      const { user, userPosts } = action.payload;
+      let newHashUserData = usersState.hashUserData;
+      let newHashUserPostsData = usersState.hashUserPostsData;
+      if (user) {
+        newHashUserData = {
+          ...usersState.hashUserData,
+          [user.USERID]: user
+        }
+      }
+      if (userPosts) {
+        newHashUserPostsData = {
+          ...usersState.hashUserPostsData,
+          [user.USERID]: userPosts
+        }
+      }
+      return {
+        ...usersState,
+        hashUserData: newHashUserData,
+        hashUserPostsData: newHashUserPostsData
       }
     default:
       return usersState;
